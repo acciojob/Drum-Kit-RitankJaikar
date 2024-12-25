@@ -1,0 +1,41 @@
+/* styles.css */
+
+/* Style for the body and keys container */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.keys {
+    display: flex;
+    gap: 10px;
+}
+
+.key {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #333;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.key:active {
+    background-color: #555;
+}
+
+/* Add hover effect */
+.key:hover {
+    background-color: #444;
+}
