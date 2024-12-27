@@ -1,4 +1,3 @@
-
 const keys = document.querySelectorAll(".key")
 
 function removeTransition(e){
