@@ -1,5 +1,3 @@
-// script.js
-
 // Array of sound files for each key
 const sounds = {
     65: new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'), // A
@@ -13,22 +11,29 @@ const sounds = {
     76: new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3')  // L
 };
 
-// Function to play sound based on key press
+// Function to play sound based on key press or click
 function playSound(e) {
-    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+    const keyCode = e.keyCode || e.target.getAttribute('data-key'); // Handle keyCode for keypress or click
+    const key = document.querySelector(`.key[data-key="${keyCode}"]`);
     if (!key) return;
 
-    const sound = sounds[e.keyCode];
+    const sound = sounds[keyCode];
     if (sound) {
+        sound.currentTime = 0; // Reset sound to the start
         sound.play();
     }
 
-    // Add class to animate the key press
+    // Add class to animate the key press or click
     key.classList.add('playing');
 }
 
 // Event listener for keydown event to detect key presses
 window.addEventListener('keydown', playSound);
+
+// Event listener for clicks on keys
+document.querySelectorAll('.key').forEach(key => {
+    key.addEventListener('click', playSound);
+});
 
 // Optional: Remove 'playing' class after animation ends
 document.querySelectorAll('.key').forEach(key => {
